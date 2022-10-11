@@ -73,59 +73,60 @@ def swap(i, j):
     H[i] = H[j]
     H[j] = temp
 
-insert(45)
-insert(20)
-insert(14)
-insert(12)
-insert(31)
-insert(7)
-insert(11)
-insert(13)
-insert(7)
-   
-i = 0
-   
-# Priority queue before extracting max
-print("Priority Queue : ", end = "")
-while (i <= size) :
- 
-    print(H[i], end = " ")
-    i += 1
-   
-print()
-   
-# Node with maximum priority
-print("Node with maximum priority :" ,  extractMax())
-   
-# Priority queue after extracting max
-print("Priority queue after extracting maximum : ", end = "")
-j = 0
-while (j <= size) :
- 
-    print(H[j], end = " ")
-    j += 1
-   
-print()
-   
-# Change the priority of element
-# present at index 2 to 49
-changePriority(2, 49)
-print("Priority queue after priority change : ", end = "")
-k = 0
-while (k <= size) :
- 
-    print(H[k], end = " ")
-    k += 1
-   
-print()
-   
-# Remove element at index 3
-Remove(3)
-print("Priority queue after removing the element : ", end = "")
-l = 0
-while (l <= size) :
- 
-    print(H[l], end = " ")
-    l += 1
+if __name__ == "__main__":
+    insert(45)
+    insert(20)
+    insert(14)
+    insert(12)
+    insert(31)
+    insert(7)
+    insert(11)
+    insert(13)
+    insert(7)
+    
+    i = 0
+    
+    # Priority queue before extracting max
+    print("Priority Queue : ", end = "")
+    while (i <= size) :
+    
+        print(H[i], end = " ")
+        i += 1
+    
+    print()
+    
+    # Node with maximum priority
+    print("Node with maximum priority :" ,  extractMax())
+    
+    # Priority queue after extracting max
+    print("Priority queue after extracting maximum : ", end = "")
+    j = 0
+    while (j <= size) :
+    
+        print(H[j], end = " ")
+        j += 1
+    
+    print()
+    
+    # Change the priority of element
+    # present at index 2 to 49
+    changePriority(2, 49)
+    print("Priority queue after priority change : ", end = "")
+    k = 0
+    while (k <= size) :
+    
+        print(H[k], end = " ")
+        k += 1
+    
+    print()
+    
+    # Remove element at index 3
+    Remove(3)
+    print("Priority queue after removing the element : ", end = "")
+    l = 0
+    while (l <= size) :
+    
+        print(H[l], end = " ")
+        l += 1
 
 
