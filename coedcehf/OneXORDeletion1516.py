@@ -21,12 +21,16 @@ for _ in range(int(input())):
     f = dict(f)
 
     ans = n
-    s = set(l)
-    s = list(s)
-    for i in range(0, n, 2):
-        ans = min(ans, n - f[s[i]] - f[s[i+1]])
+    for x in l:
+        ans = min(ans, n - f[x])
+        if x%2==0:
+            if (x+1) not in f:
+                f[x+1] = 0
+            ans = min(ans, n - (f[x] + f[x+1]))
+
+    print(ans)
 
     
-    print(f)
-    print("yep", f[s[0]])
+    # print(f)
+    # print("yep", f[s[0]])
 
