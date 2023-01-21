@@ -16,7 +16,7 @@ class Solution:
         return False
 
 
-## Another solution
+## Another solution, mind blowingly fast somehow inshallah
 
  # Approch 3 single pointer, marking nodes as visited, makes use of fact that node value's are not None
   # Time -O(n), Space- O(1)
