@@ -22,46 +22,25 @@ def mp():
 def inp():
     return int(sys.stdin.buffer.readline())
 
-def printCleanList(x):
-    print(*x, sep=" ")
-
 mod = 1000000007
 INF = float("inf")
 
 def solve():
-    # print()
-    n, s, r = mp()
-    res = [0] * (n-1)
-    res.append(s-r)
-    thing = s-r
-    # s = s - thing
-    # r = r - thing
-    for i in range(n-1):
-        res[i] = 1
-        r = r-1
-    i = 0
-    while r!=0:
-        if(res[i]<thing):
-            res[i] += 1
-            r = r - 1
-        else:
-            i += 1
-    
-    # n = n - 1
-    # while n!=0:
-    #     if s%n == 0:
-    #         res.append(s//n)
-    #         thing = s//n
-    #     else:
-    #         res.append(s%n)
-    #         thing = s%n
-    #     n = n - 1
-    #     s = s - thing
-
-    printCleanList(res)
+    pi = "3141592653589793238462643383279"
+    x = st()
+    # print(x[0:2])
+    for i in range(len(x)+1):
+        if i == 0:
+            if x[0] == pi[0]:
+                res = 1
+            else:
+                res = 0
+        elif i > 0 and x[0:i] == pi[0:i]:
+            res = i
+            # print(res, " and i is: ", i, " and x{0:4} is", x[0:i], "pi is ", pi[0:i])
         
 
-
+    print(res)
 
 
 
