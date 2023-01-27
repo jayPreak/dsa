@@ -21,6 +21,9 @@ def mp():
     return map(int, sys.stdin.buffer.readline().split())
 def inp():
     return int(sys.stdin.buffer.readline())
+    
+def printCleanList(x):
+    print(*x, sep=" ")
 
 mod = 1000000007
 INF = float("inf")
