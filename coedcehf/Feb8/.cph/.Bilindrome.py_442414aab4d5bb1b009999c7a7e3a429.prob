@@ -1,0 +1,1 @@
+{"name":"Local: Bilindrome","url":"c:\\Users\\91958\\Downloads\\newarc\\coedcehf\\Feb8\\Bilindrome.py","tests":[{"id":1675867194262,"input":"3\n6\nbabkhj\n3 \nabc \n4 \nqtoo","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91958\\Downloads\\newarc\\coedcehf\\Feb8\\Bilindrome.py","group":"local","local":true}
