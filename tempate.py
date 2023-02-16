@@ -25,6 +25,9 @@ def inp():
 def printCleanList(x):
     print(*x, sep=" ")
 
+def printListToStr(x):
+    print(*x, sep="")
+
 mod = 1000000007
 INF = float("inf")
 
