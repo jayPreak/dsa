@@ -52,27 +52,12 @@ def solve():
     a = st()
     b = st()
 
-    # ans = False
+    x = a+b[::-1]
 
-    checkedA = checkBeau(a)
-    checkedB = checkBeau(b)
-    
-
-
-    if checkedA and checkedB:
-        print("YES")
+    if ("RRR" in x) or ("BBB" in x) or (x.count("RR")+x.count("BB") > 1):
+        print("NO")
     else:
-        if checkedA:
-            if a[-1] == b[-1]:
-                print("NO")
-            else:
-
-        if checkedB:
-            if checkBeau(a[:-1]) and a[-1] != b[-1]:
-                print("YES")
-            else:
-                print("NO")
-
+        print("YES")
 
 
 
