@@ -1,0 +1,1 @@
+{"name":"Local: Bookpages","url":"c:\\Users\\91958\\Downloads\\newarc\\codeforces\\mar 15\\Bookpages.py","tests":[{"id":1678890976931,"input":"4\n3\n2 4 6\n4\n1 1 2 3\n6\n3 1 1 1 1 1\n2\n2 4 8 6 1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91958\\Downloads\\newarc\\codeforces\\mar 15\\Bookpages.py","group":"local","local":true}
