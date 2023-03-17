@@ -60,23 +60,109 @@ def moveDown(state):
 def expand(node):
     expandedNodes = []
 
-    tempState = moveDown(node.state)
-    tempNode = create(tempState, node, "down", node.depth+1, node.cost+1)
-    expandedNodes.append(tempNode)
+    tempState1 = moveDown(node.state)
+    tempNode1 = create(tempState1, node, "down", node.depth+1, node.cost+1)
+    expandedNodes.append(tempNode1)
 
-    tempState = moveUp(node.state)
-    tempNode = create(tempState, node, "up", node.depth+1, node.cost+1)
-    expandedNodes.append(tempNode)
+    tempState2 = moveUp(node.state)
+    tempNode2 = create(tempState2, node, "up", node.depth+1, node.cost+1)
+    expandedNodes.append(tempNode2)
 
-    tempState = moveLeft(node.state)
-    tempNode = create(tempState, node, "left", node.depth+1, node.cost+1)
-    expandedNodes.append(tempNode)
+    tempState3 = moveLeft(node.state)
+    tempNode3 = create(tempState3, node, "left", node.depth+1, node.cost+1)
+    expandedNodes.append(tempNode3)
 
-    tempState = moveRight(node.state)
-    tempNode = create(tempState, node, "right", node.depth+1, node.cost+1)
-    expandedNodes.append(tempNode)
+    tempState4 = moveRight(node.state)
+    tempNode4 = create(tempState4, node, "right", node.depth+1, node.cost+1)
+    expandedNodes.append(tempNode4)
 
     return expandedNodes
 
 
 #bfs XD
+def bfs(start, goal):
+    if (start==goal):
+        return [None]
+    else:
+        toBeExpanded = []
+        currNode = create(start, None, None, 0, 0)
+        toBeExpanded.append(currNode)
+
+        for i in range(total):
+            tempExpanded = []
+            size = len(toBeExpanded)
+            for j in range(size):
+                if(toBeExpanded[j] in visited):
+                    continue;
+
+                nodeList = expand(toBeExpanded[j])
+
+                for x in range(4):
+                    if (nodeList[x].state == goal):
+                        count = i+1
+                        print()
+                        print("Goal State found.", nodeList[x].state)
+                        print()
+                        print("0 | 1 | 2")
+                        print("3 | 4 | 5")
+                        print("6 | 7 | 8")
+                        return nodeList[x]
+                    else:
+                        tempExpanded.append(nodeList[x])
+                        visited.append(nodeList[x].state)
+            
+            toBeExpanded.clear()
+            toBeExpanded = tempExpanded.copy()
+            tempExpanded.clear()
+    return None
+
+#yep
+
+def main(board):
+    method = 'bfs'
+    leng = 0
+    x = 1
+    boardSplit = board.split(",")
+    startingState = [int(i) for i in boardSplit]
+    print("Starting State: ")
+    print(startingState)
+
+
+    if (len(startingState) == 9):
+        res = bfs(startingState, goal)
+        if res == None:
+            print("No solution found. ")
+        elif res == [None]:
+            print("Start Node was the goal. lol")
+        else:
+            print()
+            print("Total moves used: ", res.cost)
+            path = []
+            path.append(res.state)
+            curr = res
+
+            flag = True
+
+            while(flag):
+                parent = curr.parent
+                prevState = parent.state
+                path.append(prevState)
+                curr = parent
+
+                if(prevState == startingState):
+                    flag = False
+            
+            path.reverse()
+            print()
+            print("Stepwise Sequence of states: ")
+            for state in path:
+                print(state[0] , " | " , state[1], " | ", state[2])
+                print(state[3] , " | " , state[4], " | ", state[5])
+                print(state[6] , " | " , state[7], " | ", state[8])
+                print()
+    else:
+        print("invalid input tbh")
+
+if __name__ == "__main__":
+    board = "1,2,5,3,4,0,6,7,8"
+    main(board)
