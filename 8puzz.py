@@ -23,41 +23,42 @@ def create(state, parent, operator, depth, cost):
 
 def moveLeft(state):
     swap = state.copy()
-    index = swap.index(0)
-    if index == 0 or index == 3 or index == 6:
+    indxx = swap.index(0)
+    if (indxx == 0 or indxx == 3 or indxx == 6):
         return swap
     else:
-        swap[index-1], swap[index] = swap[index], swap[index-1]
+        swap[indxx-1], swap[indxx] = swap[indxx], swap[indxx-1]
         return swap
     
 def moveRight(state):
     swap = state.copy()
-    index = swap.index(0)
-    if index == 2 or index == 5 or index == 8:
+    indxx = swap.index(0)
+    if (indxx == 2 or indxx == 5 or indxx == 8):
         return swap
     else:
-        swap[index-1], swap[index] = swap[index], swap[index-1]
+        swap[indxx-1], swap[indxx] = swap[indxx], swap[indxx-1]
         return swap
     
 def moveUp(state):
     swap = state.copy()
-    index = swap.index(0)
-    if index == 0 or index == 1 or index == 2:
+    indxx = swap.index(0)
+    if (indxx == 0 or indxx == 1 or indxx == 2):
         return swap
     else:
-        swap[index-1], swap[index] = swap[index], swap[index-1]
+        swap[indxx-3], swap[indxx] = swap[indxx], swap[indxx-3]
         return swap
     
 def moveDown(state):
     swap = state.copy()
-    index = swap.index(0)
-    if index == 6 or index == 7 or index == 8:
+    indxx = swap.index(0)
+    if (indxx == 6 or indxx == 7 or indxx == 8):
         return swap
     else:
-        swap[index-1], swap[index] = swap[index], swap[index-1]
+        swap[indxx-3], swap[indxx] = swap[indxx], swap[indxx-3]
         return swap
 #expanding node
 def expand(node):
+    # print("hi")
     expandedNodes = []
 
     tempState1 = moveDown(node.state)
