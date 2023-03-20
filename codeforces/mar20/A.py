@@ -32,7 +32,11 @@ mod = 1000000007
 INF = float("inf")
 
 def solve():
-    print()
+    a, b, c = mp()
+    if a + b == c:
+        print("+")
+    elif a - b == c:
+        print("-")
 
 
 
