@@ -1,6 +1,6 @@
 
 # global variables
-import sys
+# import sys
 visited = []
 goal = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 total = 70
@@ -9,15 +9,15 @@ count = 0
 
 #class
 class Node:
-    def __init__(self, state, parent, operator, depth, cost):
+    def __init__(self, state, parent, child, depth, cost):
         self.state = state
         self.parent = parent
-        self.operator = operator
+        self.child = child
         self.depth = depth
         self.cost = cost
 
-def create(state, parent, operator, depth, cost):
-    return Node(state, parent, operator, depth, cost)
+# def create(state, parent, child, depth, cost):
+#     return Node(state, parent, child, depth, cost)
 
 #moves
 
@@ -62,19 +62,19 @@ def expand(node):
     expandedNodes = []
 
     tempState1 = moveDown(node.state)
-    tempNode1 = create(tempState1, node, "down", node.depth+1, node.cost+1)
+    tempNode1 = Node(tempState1, node, "down", node.depth+1, node.cost+1)
     expandedNodes.append(tempNode1)
 
     tempState2 = moveUp(node.state)
-    tempNode2 = create(tempState2, node, "up", node.depth+1, node.cost+1)
+    tempNode2 = Node(tempState2, node, "up", node.depth+1, node.cost+1)
     expandedNodes.append(tempNode2)
 
     tempState3 = moveLeft(node.state)
-    tempNode3 = create(tempState3, node, "left", node.depth+1, node.cost+1)
+    tempNode3 = Node(tempState3, node, "left", node.depth+1, node.cost+1)
     expandedNodes.append(tempNode3)
 
     tempState4 = moveRight(node.state)
-    tempNode4 = create(tempState4, node, "right", node.depth+1, node.cost+1)
+    tempNode4 = Node(tempState4, node, "right", node.depth+1, node.cost+1)
     expandedNodes.append(tempNode4)
 
     return expandedNodes
@@ -86,7 +86,7 @@ def bfs(start, goal):
         return [None]
     else:
         toBeExpanded = []
-        currNode = create(start, None, None, 0, 0)
+        currNode = Node(start, None, None, 0, 0)
         toBeExpanded.append(currNode)
 
         for i in range(total):
