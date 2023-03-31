@@ -34,21 +34,45 @@ INF = float("inf")
 def solve():
     # print()
     n = inp()
-    l = li()
-    res = False
+    # print(n, "yeppp")
+    candies = 1
+    res = 0
+    resli = []
+    if n % 2 ==0:
+        print(-1)
+    else:
+        i = 0
+        while i <= 40:
+            i+=1
+            if (2*candies)+1 == n:
+                res = i
+                resli.append(2)
+                break
+            elif (2*candies)-1==n:
+                res = i
+                resli.append(1)
+                break
+            else:
+                if (2*candies)+1 < n:
+                    candies = (2*candies)+1
+                    resli.append(2)
+                    if candies == n:
+                        res=i
+                        break
+                elif (2*candies)+1 > n:
+                    candies = (2*candies)-1
+                    resli.append(1)
+                    if candies == n:
+                        res=i
+                        break
+                
 
-    for i in range(len(l)):
-        if i+1 == l[i]:
-            res = True
-            break
-        if l[i]<len(l) and i+1>=l[i]:
-            res = True
-            break
+        print(res)
+        printCleanList(resli)
 
 
-    print("YES" if res else "NO")
 
-    
+        
 
 
 
