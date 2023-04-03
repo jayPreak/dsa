@@ -36,12 +36,17 @@ def solve():
     n = inp()
     l = li()
 
-    for x in range(28):
-        b =[ai^x for ai in l]
-        print(b)
-        if sum(b) ==0:
-            # print(x)
-            return
+    xord = 0
+    for a in l:
+        xord = xord ^ a
+
+    if n %2 == 1:
+        print(xord)
+    else:
+        if xord==0:
+            print(0)
+        else:
+            print(-1)
     # return -1
     # print(6^6)
 
