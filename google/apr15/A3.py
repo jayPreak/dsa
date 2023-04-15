@@ -1,26 +1,20 @@
 def find_color_order(N, colors):
-    color_dict = {}
-    last_written = {}
+    last_color = colors[0]
+    color_order = [last_color]
+    impossible = False
 
-    for i, color in enumerate(colors):
-        if color not in color_dict:
-            color_dict[color] = [i]
-        else:
-            color_dict[color].append(i)
+    for i in range(1, N):
+        if colors[i] != last_color:
+            if last_color > colors[i]:
+                impossible = True
+                break
+            last_color = colors[i]
+            color_order.append(last_color)
 
-    color_order = sorted(color_dict.keys())
-
-    for i in range(len(color_order)):
-        indices = color_dict[color_order[i]]
-        if i == 0:
-            last_written[color_order[i]] = indices[-1]
-        else:
-            prev_color = color_order[i - 1]
-            if indices[0] <= last_written[prev_color]:
-                return "IMPOSSIBLE"
-            last_written[color_order[i]] = indices[-1]
-
-    return " ".join(str(color) for color in color_order)
+    if impossible:
+        return "IMPOSSIBLE"
+    else:
+        return " ".join(str(color) for color in color_order)
 
 
 def main():
