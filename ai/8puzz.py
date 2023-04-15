@@ -7,7 +7,9 @@ total = 70
 expanded = 0
 count = 0
 
-#class
+# class
+
+
 class Node:
     def __init__(self, state, parent, child, depth, cost):
         self.state = state
@@ -19,7 +21,8 @@ class Node:
 # def create(state, parent, child, depth, cost):
 #     return Node(state, parent, child, depth, cost)
 
-#moves
+# moves
+
 
 def moveLeft(state):
     swap = state.copy()
@@ -29,7 +32,8 @@ def moveLeft(state):
     else:
         swap[indxx-1], swap[indxx] = swap[indxx], swap[indxx-1]
         return swap
-    
+
+
 def moveRight(state):
     swap = state.copy()
     indxx = swap.index(0)
@@ -38,7 +42,8 @@ def moveRight(state):
     else:
         swap[indxx-1], swap[indxx] = swap[indxx], swap[indxx-1]
         return swap
-    
+
+
 def moveUp(state):
     swap = state.copy()
     indxx = swap.index(0)
@@ -47,7 +52,8 @@ def moveUp(state):
     else:
         swap[indxx-3], swap[indxx] = swap[indxx], swap[indxx-3]
         return swap
-    
+
+
 def moveDown(state):
     swap = state.copy()
     indxx = swap.index(0)
@@ -56,7 +62,9 @@ def moveDown(state):
     else:
         swap[indxx-3], swap[indxx] = swap[indxx], swap[indxx-3]
         return swap
-#expanding node
+# expanding node
+
+
 def expand(node):
     # print("hi")
     expandedNodes = []
@@ -80,9 +88,9 @@ def expand(node):
     return expandedNodes
 
 
-#bfs XD
+# bfs XD
 def bfs(start, goal):
-    if (start==goal):
+    if (start == goal):
         return [None]
     else:
         toBeExpanded = []
@@ -93,8 +101,8 @@ def bfs(start, goal):
             tempExpanded = []
             size = len(toBeExpanded)
             for j in range(size):
-                if(toBeExpanded[j] in visited):
-                    continue;
+                if (toBeExpanded[j] in visited):
+                    continue
 
                 nodeList = expand(toBeExpanded[j])
 
@@ -111,13 +119,14 @@ def bfs(start, goal):
                     else:
                         tempExpanded.append(nodeList[x])
                         visited.append(nodeList[x].state)
-            
+
             toBeExpanded.clear()
             toBeExpanded = tempExpanded.copy()
             tempExpanded.clear()
     return None
 
-#yep
+# yep
+
 
 def main(board):
     method = 'bfs'
@@ -127,7 +136,6 @@ def main(board):
     startingState = [int(i) for i in boardSplit]
     print("Starting State: ")
     print(startingState)
-
 
     if (len(startingState) == 9):
         res = bfs(startingState, goal)
@@ -144,25 +152,26 @@ def main(board):
 
             flag = True
 
-            while(flag):
+            while (flag):
                 parent = curr.parent
                 prevState = parent.state
                 path.append(prevState)
                 curr = parent
 
-                if(prevState == startingState):
+                if (prevState == startingState):
                     flag = False
-            
+
             path.reverse()
             print()
             print("Stepwise Sequence of states: ")
             for state in path:
-                print(state[0] , " | " , state[1], " | ", state[2])
-                print(state[3] , " | " , state[4], " | ", state[5])
-                print(state[6] , " | " , state[7], " | ", state[8])
+                print(state[0], " | ", state[1], " | ", state[2])
+                print(state[3], " | ", state[4], " | ", state[5])
+                print(state[6], " | ", state[7], " | ", state[8])
                 print()
     else:
         print("invalid input tbh")
+
 
 if __name__ == "__main__":
     board = "1,2,5,3,4,0,6,7,8"
