@@ -47,20 +47,31 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.green);
-        g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+        if (running) {
+            g.setColor(Color.green);
+            g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
 
-        for (int i = 0; i < bodyParts; i++) {
-            if (i == 0) {
-                g.setColor(Color.red);
-                g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+            for (int i = 0; i < bodyParts; i++) {
+                if (i == 0) {
+                    g.setColor(Color.red);
+                    g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 
-            } else {
-                g.setColor(new Color(45, 180, 0));
-                g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                } else {
+                    // g.setColor(new Color(45, 180, 0));
+                    g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+                    g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 
+                }
             }
+            g.setColor(Color.red);
+        g.setFont(new Font("Ink Free", Font.BOLD, 40));
+        FontMetrics metrics2 = getFontMetrics(g.getFont());
+        g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics2.stringWidth("Score: " + applesEaten)) / 2,
+                g.getFont().getSize());
+        } else {
+            gameOver(g);
         }
+       
     }
 
     public void newApple() {
@@ -96,21 +107,94 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void checkApple() {
+        if((x[0] == appleX) && (y[0] == appleY)) {
+            bodyParts++;
+            applesEaten++;
+            newApple();
+        }
     }
 
     public void checkCollissions() {
+        for (int i = bodyParts; i > 0; i--) {
+            if ((x[0] == x[i]) && (y[0] == y[i])) {
+                running = false;
+            }
+        }
+
+        if (x[0] < 0) {
+            running = false;
+        }
+        if (x[0] > SCREEN_WIDTH) {
+            running = false;
+        }
+        if (y[0] < 0) {
+            running = false;
+        }
+        if (y[0] > SCREEN_HEIGHT) {
+            running = false;
+        }
+        if (!running) {
+            timer.stop();
+        }
     }
+
+    
+
     public void gameOver(Graphics g) {
+        g.setColor(Color.blue);
+        g.setFont(new Font("Comic Sans MS", Font.BOLD, 75));
+        FontMetrics metrics1 = getFontMetrics(g.getFont());
+        int x = (SCREEN_WIDTH - metrics1.stringWidth("Game Over")) / 2;
+        int y = SCREEN_HEIGHT / 2;
+        g.drawString("game over", x, y);
+        y += metrics1.getHeight();  
+        g.drawString("b0zo", x, y);
+        g.setColor(Color.red);
+        g.setFont(new Font("Ink Free", Font.BOLD, 40));
+        FontMetrics metrics2 = getFontMetrics(g.getFont());
+        g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics2.stringWidth("Score: " + applesEaten)) / 2,
+                g.getFont().getSize());
+        
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        if (running) {
+            move();
+            checkApple();
+            checkCollissions();
+        }
+        repaint();
     }
     
     public class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-            // TODO Auto-generated method stub
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                case KeyEvent.VK_A:  // Added WASD key support
+                    if (direction != 'R') {
+                        direction = 'L';
+                    }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                case KeyEvent.VK_D:  // Added WASD key support
+                    if (direction != 'L') {
+                        direction = 'R';
+                    }
+                    break;
+                case KeyEvent.VK_UP:
+                case KeyEvent.VK_W:  // Added WASD key support
+                    if (direction != 'D') {
+                        direction = 'U';
+                    }
+                    break;
+                case KeyEvent.VK_DOWN:
+                case KeyEvent.VK_S:  // Added WASD key support
+                    if (direction != 'U') {
+                        direction = 'D';
+                    }
+                    break;
+            }
         }
     }
 }
