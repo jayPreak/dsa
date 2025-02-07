@@ -1,8 +1,8 @@
-alreadySeen = []
-newArr=[]
-nums=[1,1,2]
-j = 1
-for i in range(1, len(nums)):
-    if nums[i] != nums[i-1]:
-        nums[j] = nums[i]
-        j+=1
+profit =0
+prices = [7,1,5,3,6,4]
+
+for i in range(1, len(prices)):
+    if prices[i] > prices[i-1]:
+        profit += prices[i] - prices[i-1]
+        
+print(profit)
