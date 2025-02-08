@@ -1,8 +1,12 @@
-profit =0
-prices = [7,1,5,3,6,4]
+k =3
+nums = [1,2,3,4,5,6,7]
+temp = []
 
-for i in range(1, len(prices)):
-    if prices[i] > prices[i-1]:
-        profit += prices[i] - prices[i-1]
-        
-print(profit)
+nums = nums[-k:] + nums[:-k]
+
+
+for i in range(k):
+    nums.insert(0, nums.pop(-1))
+    
+print(nums)
+    
