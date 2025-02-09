@@ -1,12 +1,12 @@
-k =3
-nums = [1,2,3,4,5,6,7]
-temp = []
+nums = [1,2,3,4]
+flag = False
+temp=set()
 
-nums = nums[-k:] + nums[:-k]
-
-
-for i in range(k):
-    nums.insert(0, nums.pop(-1))
+for num in nums:
+    if num in temp:
+        flag = True
+        break
+    temp.add(num)
     
-print(nums)
+print(flag)
     
