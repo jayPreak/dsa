@@ -33,10 +33,60 @@ def printPretty2DList(x):
 
 
 mod = 1000000007
+MAX_VAL = 10**6 
+arrayWithInt = [-1] * (MAX_VAL + 1) 
+empty2dArray = [[]] * (MAX_VAL + 1)
+
 INF = float("inf")
 
 def solve():
-    print("awa")
+    n = inp()
+    l = li()
+
+    minValue = float('inf')
+    # print(min)
+
+    for i, v in enumerate(l):
+        # print("minValue", minValue)
+        # print(arrayWithInt)
+        if arrayWithInt[v] != -1:
+            minValue = min(minValue, i - arrayWithInt[v] +1)
+
+        
+
+        arrayWithInt[v] = i
+
+    print(minValue if minValue != float('inf') else -1)
+
+
+    #brute force 😈
+    # print(l)
+    # current = l[0]
+    # start = 0
+
+    # if n == 1:
+    #     print(1)
+    #     return
+
+    # while start < n:
+    #     # print("start", start)
+    #     for i in range(start+1, n):
+    #         # print("current", current)
+    #         if current == l[i]:
+    #             print(i+1)
+    #             return
+    #     start +=1
+    #     if start < n:
+    #         current = l[start]
+        
+    # print(-1)
+
+
+        
+    
+
+        
+
 
     
 solve()
