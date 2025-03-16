@@ -40,7 +40,18 @@ empty2dArray = [[]] * (MAX_VAL + 1)
 INF = float("inf")
 
 def solve():
-    print()
+    s= st()
+    # res = ""
+    n = s.count("2")
+
+    print("2"*n)
+
+    # for i in s:
+    #     if i == "2":
+    #         res += i
+
+    # print(res)
+
 
         
     
