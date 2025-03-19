@@ -45,7 +45,17 @@ empty2dArray = [[]] * (MAX_VAL + 1)
 INF = float("inf")
 
 def solve():
-    print()
+    s = normalStringArrayInput()
+    # print(s)
+
+    if s[0] == "sick" and s[1] == "sick":
+        print(1)
+    elif s[0] == "sick" and s[1] == "fine":
+        print(2)
+    if s[0] == "fine" and s[1] == "sick":
+        print(3)
+    if s[0] == "fine" and s[1] == "fine":
+        print(4)
     
 
     
