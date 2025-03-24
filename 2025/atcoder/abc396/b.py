@@ -46,9 +46,21 @@ INF = float("inf")
 
 def solve():
     q = inp()
-    for _ in range(l):
+    s = []
+    for _ in range(q):
+        # print("uhh",s)
         l = li()
-        print(l)
+        if l[0] == 2:
+            if len(s) == 0:
+                print(0)
+            else:
+                print(s[0])
+                s.pop(0)
+        else:
+            s.insert(0, l[1])
+
+
+
     
     
 
