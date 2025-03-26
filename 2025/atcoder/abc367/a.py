@@ -45,9 +45,9 @@ empty2dArray = [[]] * (MAX_VAL + 1)
 INF = float("inf")
 
 def solve():
-    x = inp()
+    x = float(input())
 
-    if (x == 38.0):
+    if (x >= 38.0):
         print(1)
     elif (38.0 > x>= 37.5):
         print(2)
