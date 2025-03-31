@@ -45,8 +45,42 @@ empty2dArray = [[]] * (MAX_VAL + 1)
 INF = float("inf")
 
 def solve():
-    x = normalListInp()
-    print(x)
+    x= st()
+    ans = 0
+    curr = 'i'
+    for i in x:
+        if i == curr:
+            curr = "o" if curr == "i" else "i"
+        else:
+            ans += 1
+
+    if curr == "o":
+        ans+=1
+    print(ans)
+
+    
+    # # for i in range(1, 2):
+    # #     print(i)
+    # x = normalListInp()
+    # n = len(x)
+    # if n==1:
+    #     print(1)
+    #     return
+    # ans = 0
+
+    # # print(len(x))
+    # #XDDDDDNEL:JLFNM:DLJM:LDKML:DKMFL:K
+    # for i in range(1, n):
+    #     # print("I", i)
+    #     # print("ans", ans)
+    #     if x[i-1] == x[i]:
+    #         ans +=1
+    # # print("ans outside loop", ans)
+    # if x[-1] == "i" or x[0] == "o":
+    #     # print("hi")
+    #     ans +=1
+
+    # print(ans)
 
 
 
