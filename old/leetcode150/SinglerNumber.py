@@ -9,10 +9,25 @@
 # z = res.most_common()
 # print(z[-1][0])
 
-from collections import Counter
+# from collections import Counter
+
+# class Solution:
+#     def singleNumber(self, nums: List[int]) -> int:
+#         a = Counter(nums)
+#         b = a.most_common()
+#         return b[-1][0]
+
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        a = Counter(nums)
-        b = a.most_common()
-        return b[-1][0]
+        x = {}
+        for num in nums:
+            if num not in x:
+                x[num] = 1
+            else:
+                x[num] += 1
+                
+        for key, val in x.items():
+            if val == 1:
+                return key
+        
