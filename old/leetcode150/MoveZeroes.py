@@ -5,16 +5,30 @@
 # nums =  one + two 
 # print(nums)
 
+# class Solution:
+#     def moveZeroes(self, nums: List[int]) -> None:
+#         """
+#         Do not return anything, modify nums in-place instead.
+#         """
+#         i = 0
+#         for x in nums:
+#             if x != 0:
+#                 nums[i] = x
+#                 i+=1
+
+#         for z in range(i, len(nums)):
+#             nums[z] = 0
+
+
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
         i = 0
-        for x in nums:
-            if x != 0:
-                nums[i] = x
+        for j in range(len(nums)):
+            if nums[j] != 0:
+                nums[i], nums[j] = nums[j], nums[i]
                 i+=1
-
-        for z in range(i, len(nums)):
-            nums[z] = 0
+                
+        
